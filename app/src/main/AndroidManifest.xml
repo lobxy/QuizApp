@@ -8,17 +8,26 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".Admin.AddQuestion"></activity>
-        <activity android:name=".Admin.MainActivity" />
-        <activity android:name=".QuizScreen" />
-        <activity android:name=".MainActivity">
+        android:theme="@style/AppFullScreenTheme">
+        <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".LoginSignUpActivity" />
+        <activity
+            android:name=".Online.OnlineQuizActivity"
+            android:theme="@style/AppTheme" />
+        <activity android:name=".Admin.AddQuestion" />
+        <activity
+            android:name=".Admin.AdminMainActivity"
+            android:theme="@style/AppTheme" />
+        <activity android:name=".QuizScreen" />
+        <activity
+            android:name=".MainActivity"
+            android:theme="@style/AppTheme" />
     </application>
 
 </manifest>

@@ -165,6 +165,7 @@
 
     <ProgressBar
         android:id="@+id/aqProgressBar"
+        android:visibility="invisible"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

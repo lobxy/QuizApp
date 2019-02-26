@@ -124,16 +124,23 @@ public class AddQuestion extends AppCompatActivity {
 
         //set difficulty level - for future
 
-        //feed data and upload data into db
-        Question ques = new Question(question, option1, option2, option3, option4, correctAnswer);
+        String id = reference.push().getKey();
 
-        reference.setValue(ques).addOnCompleteListener(new OnCompleteListener<Void>() {
+        //feed data and upload data into db
+        Question ques = new Question(id, question, option1, option2, option3, option4, correctAnswer);
+
+        reference.child(id).setValue(ques).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 progressBar.setVisibility(View.INVISIBLE);
 
                 if (task.isSuccessful()) {
                     showToast("Question Added");
+                    et_option1.setText("");
+                    et_option2.setText("");
+                    et_option3.setText("");
+                    et_option4.setText("");
+                    et_question.setText("");
                 } else {
                     showToast(task.getException().getMessage());
                 }
