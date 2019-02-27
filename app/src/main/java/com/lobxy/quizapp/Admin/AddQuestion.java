@@ -3,6 +3,7 @@ package com.lobxy.quizapp.Admin;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -25,6 +26,7 @@ import java.util.List;
 
 public class AddQuestion extends AppCompatActivity {
 
+    private static final String TAG = "AddQuestion";
     //for correct answer
     private Spinner spinner;
 
@@ -35,7 +37,8 @@ public class AddQuestion extends AppCompatActivity {
     private EditText et_option3;
     private EditText et_option4;
 
-    private String question, option1, option2, option3, option4, correctAnswer;
+    private String question, option1, option2, option3, option4;
+    private int correctAnswer = 0;
 
     private DatabaseReference reference;
 
@@ -83,7 +86,9 @@ public class AddQuestion extends AppCompatActivity {
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                correctAnswer = adapter.getItem(i);
+                correctAnswer = adapterView.getSelectedItemPosition();
+                Log.i(TAG, "onItemSelected: position: " + correctAnswer);
+
             }
 
             @Override
@@ -102,9 +107,9 @@ public class AddQuestion extends AppCompatActivity {
         option3 = et_option3.getText().toString().trim();
         option4 = et_option4.getText().toString().trim();
 
-        correctAnswer = spinner.getSelectedItem().toString();
+        correctAnswer = spinner.getSelectedItemPosition();
 
-        if (correctAnswer.equals("Select")) {
+        if (correctAnswer == 0) {
             showToast("Select correct answer");
             return;
         }

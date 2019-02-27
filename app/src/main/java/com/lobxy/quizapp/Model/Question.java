@@ -5,9 +5,10 @@ public class Question {
     public Question() {
     }
 
-    String question, option1, option2, option3, option4, correctAnswer, id;
+    String question, option1, option2, option3, option4, id;
+    int correctAnswer;
 
-    public Question(String id, String question, String option1, String option2, String option3, String option4, String correctAnswer) {
+    public Question(String id, String question, String option1, String option2, String option3, String option4, int correctAnswer) {
         this.id = id;
         this.question = question;
         this.option1 = option1;
@@ -65,11 +66,11 @@ public class Question {
         this.option4 = option4;
     }
 
-    public String getCorrectAnswer() {
+    public int getCorrectAnswer() {
         return correctAnswer;
     }
 
-    public void setCorrectAnswer(String correctAnswer) {
+    public void setCorrectAnswer(int correctAnswer) {
         this.correctAnswer = correctAnswer;
     }
 }
