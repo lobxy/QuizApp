@@ -17,7 +17,11 @@ import java.util.Random;
 
 public class QuizScreen extends AppCompatActivity implements View.OnClickListener {
 
+    //TODO: add other functions like: +-,/,*,% etc.
+
     private static final String TAG = "Quiz";
+    public static int QUIZ_LENGTH = 30; //in secs
+
     Button resetButton;
     TextView questionTextView, scoreBoard, timerTextView;
 
@@ -54,7 +58,7 @@ public class QuizScreen extends AppCompatActivity implements View.OnClickListene
 
         createRandom();
 
-        countDownTimer = new CountDownTimer(30000, 1000) {
+        countDownTimer = new CountDownTimer(QUIZ_LENGTH * 1000, 1000) {
             @Override
             public void onTick(long l) {
                 timerTextView.setText("Timer: " + String.valueOf(l / 1000));
@@ -122,17 +126,12 @@ public class QuizScreen extends AppCompatActivity implements View.OnClickListene
                 String value = numbers.get(i).toString();
                 buttons[i].setText(value);
             }
-
         }
-
-
     }
 
 
     private void reset() {
-
         //reset the timer and restart the game.
-
         countDownTimer.start();
 
         score = 0;
@@ -140,9 +139,7 @@ public class QuizScreen extends AppCompatActivity implements View.OnClickListene
         solution = 0;
 
         createRandom();
-
     }
-
 
     @Override
     public void onClick(View view) {
@@ -177,5 +174,10 @@ public class QuizScreen extends AppCompatActivity implements View.OnClickListene
         createRandom();
     }
 
-
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        countDownTimer.cancel();
+        finish();
+    }
 }

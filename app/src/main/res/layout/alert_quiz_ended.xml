@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
+    android:background="#787878"
     android:padding="16dp">
 
     <TextView
@@ -15,17 +16,21 @@
         android:textColor="@android:color/black"
         android:textSize="22sp" />
 
-    <Button
-        android:id="@+id/btn_quizRetry"
+    <TextView
+        android:id="@+id/text_quizScore"
         android:layout_width="match_parent"
+        android:padding="4dp"
+        android:text=""
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
         android:layout_height="wrap_content"
         android:layout_marginBottom="4dp"
-        android:text="Start Again?" />
+        android:textSize="22sp" />
 
     <Button
         android:id="@+id/btn_quizExit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Exit?" />
+        android:text="Exit" />
 
 </LinearLayout>
